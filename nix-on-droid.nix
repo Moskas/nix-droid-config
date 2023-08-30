@@ -3,10 +3,8 @@
 {
   # Simply install just the packages
   environment.packages = with pkgs; [
-    # User-facing stuff that you really really want to have
-    neovim # or some other editor, e.g. nano or neovim
+    neovim
     nixfmt
-    # Some common stuff that people expect to have
     diffutils
     findutils
     utillinux
@@ -16,7 +14,7 @@
     gnugrep
     ripgrep
     gnupg
-    #gnused
+    gnused
     gnutar
     bzip2
     gzip
@@ -30,6 +28,9 @@
 
   # Read the changelog before changing this value
   system.stateVersion = "23.05";
+
+  terminal.font =
+    "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
 
   # Set up nix for flakes
   nix.extraOptions = ''
