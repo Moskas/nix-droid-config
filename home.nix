@@ -6,7 +6,7 @@
   # Read the changelog before changing this value
   home.stateVersion = "23.05";
 
-  home.packages = with pkgs; [ direnv neofetch onefetch ranger ];
+  home.packages = with pkgs; [ direnv neofetch onefetch ranger cargo duf du-dust xmrig ];
 
   # insert home-manager config
   programs.bash = {

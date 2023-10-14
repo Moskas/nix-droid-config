@@ -4,9 +4,16 @@
   # Simply install just the packages
   environment.packages = with pkgs; [
     neovim
+    btop
     nixfmt
+    openssh
+    curl
+    wget
     diffutils
     findutils
+    unixtools.ifconfig
+    unixtools.whereis
+    which
     utillinux
     tzdata
     hostname
@@ -39,8 +46,6 @@
 
   # Set your time zone
   time.timeZone = "Europe/Warsaw";
-
-  #networking.hostName = "Z23";
 
   # Configure home-manager
   home-manager = {
