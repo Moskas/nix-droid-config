@@ -1,0 +1,4 @@
+#+title: Readme
+
+My experimental [[https://github.com/nix-community/nix-on-droid][nix-on-droid]] flake.
+As of now it has a minimal copy of my main [[https://github.com/Moskas/nixos-config][flake]] for shell and git configs.
