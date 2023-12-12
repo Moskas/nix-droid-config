@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Simply install just the packages
@@ -29,6 +29,9 @@
     zip
     unzip
   ];
+
+  # Enable openssh
+  services.openss.enable = true;
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
   environment.etcBackupExtension = ".bak";
