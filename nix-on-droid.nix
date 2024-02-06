@@ -1,12 +1,14 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./modules/services/ssh.nix ];
+
   # Simply install just the packages
   environment.packages = with pkgs; [
     neovim
-    btop
     nixfmt
     openssh
+    mosh
     curl
     wget
     coreutils
