@@ -9,6 +9,7 @@
     openssh
     curl
     wget
+    coreutils
     diffutils
     findutils
     unixtools.ifconfig

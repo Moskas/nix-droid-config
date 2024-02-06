@@ -9,7 +9,7 @@
       add_newline = false;
       palette = "gruvbox";
       format = lib.concatStrings [
-        "$os$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$line_break$directory$sudo$character"
+        "$os$username$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$line_break$directory$sudo$character"
       ];
       scan_timeout = 10;
       character = {
@@ -65,8 +65,8 @@
         symbols = {
           Arch = "[  ](fg:bg $style)";
           NixOS = "[  ](fg:bg $style)";
-          Macos = "[  ](fg:red $style)";
-          Linux = "[  ](fg:fg $style)";
+          Macos = "[  ](fg:bg $style)";
+          Linux = "[  ](fg:bg $style)";
         };
       };
       nix_shell = {
