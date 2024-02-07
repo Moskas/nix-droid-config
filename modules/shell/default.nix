@@ -10,4 +10,14 @@
     ./tmux.nix
     ./zsh.nix
   ];
+
+  home.packages = with pkgs; [
+    direnv
+    neofetch
+    onefetch
+    ranger
+    cargo
+    duf
+    du-dust
+  ];
 }

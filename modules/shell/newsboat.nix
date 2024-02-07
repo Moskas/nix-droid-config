@@ -54,9 +54,7 @@
       { url = ''"query:Odysee:tags # \"Odysee\""''; }
       { url = ''"query:Piped:tags # \"Piped\""''; }
       { url = ''"query:Blog:tags # \"Blog\""''; }
-      {
-        url = ''"query:Wrocław:tags # \"Wrocław\""'';
-      }
+      { url = ''"query:Wrocław:tags # \"Wrocław\""''; }
       {
         url = "http://localhost:8000/feed";
       }
@@ -437,7 +435,7 @@
       }
       {
         url = "https://vermaden.wordpress.com/feed";
-        tags = [ "Blog" "Tech" "BSD"];
+        tags = [ "Blog" "Tech" "BSD" ];
         title = "vermaden";
       }
       {

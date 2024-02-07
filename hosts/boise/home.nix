@@ -1,25 +1,21 @@
-{ config, pkgs, nix-colors, ... }:
+{ config, pkgs, nix-colors, nixvim, ... }:
 
 {
 
-  imports =
-    [ ../../modules/shell ../../modules/git ../../modules/editors/emacs.nix ];
+  imports = [
+    nix-colors.homeManagerModules.default
+    #nixvim.homeManagerModules.nixvim
+    ../../modules/shell
+    ../../modules/git
+    ../../modules/editors
+  ];
 
-  #colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
 
   # Read the changelog before changing this value
   home.stateVersion = "23.05";
 
-  home.packages = with pkgs; [
-    direnv
-    neofetch
-    onefetch
-    ranger
-    cargo
-    duf
-    du-dust
-    xmrig
-  ];
+  home.packages = with pkgs; [ ];
 
   # insert home-manager config
   programs.bash = {

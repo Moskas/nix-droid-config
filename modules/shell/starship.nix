@@ -3,13 +3,13 @@
 {
   programs.starship = {
     enable = true;
-    enableBashIntegration = true;
+    enableZshIntegration = true;
     package = pkgs.starship;
     settings = {
       add_newline = false;
-      palette = "gruvbox";
+      palette = "dynamic";
       format = lib.concatStrings [
-        "$os$username$rust$python$node$lua$git_branch$git_status$git_state$cmd_duration$fill$line_break$directory$sudo$character"
+        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo$character"
       ];
       scan_timeout = 10;
       character = {
@@ -19,9 +19,9 @@
       fill = { symbol = " "; };
       time = {
         disabled = false;
-        format = "[ $time ]($style)";
+        format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
-        style = "fg:bg  bg:yellow";
+        style = "fg:magenta  bg:dark-gray";
       };
       username = {
         disabled = false;
@@ -32,8 +32,9 @@
       };
       hostname = {
         ssh_only = false;
+        ssh_symbol = "󰣀 ";
         format = "[ $hostname ]($style)";
-        style = " fg:bg bg:red bold";
+        style = " fg:bg bg:dark-cyan bold";
         disabled = false;
       };
       memory_usage = {
@@ -59,23 +60,28 @@
         symbol = " ";
         detect_extensions = ''["c", "h", "cpp"]'';
       };
+      lua = {
+        symbol = "";
+        format = "[ $symbol $version ](bg:blue fg:bg)";
+      };
       os = {
         disabled = false;
         style = "bg:blue";
         symbols = {
           Arch = "[  ](fg:bg $style)";
           NixOS = "[  ](fg:bg $style)";
-          Macos = "[  ](fg:bg $style)";
+          Macos = "[  ](fg:red $style)";
           Linux = "[  ](fg:bg $style)";
         };
       };
       nix_shell = {
-        symbol = " ";
-        format = "[$symbol](bold blue)";
+        disabled = false;
+        symbol = "";
+        format = "[ $symbol $state ](bg:blue fg:bg bold)";
       };
       cmd_duration = {
         min_time = 500;
-        format = "[ took $duration ](fg:bg bg:yellow)";
+        format = "[ $duration ](fg:yellow bg:dark-gray)";
       };
       git_branch = {
         format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
@@ -83,9 +89,12 @@
       };
       git_status = {
         format = "([$all_status ](bg:purple fg:bg ))";
-        stashed = "📦";
-        modified = "📝";
-        staged = "+($count)";
+        stashed = " 󰿺";
+        modified = " 󱞁";
+        untracked = " 󱙓";
+        deleted = " 󱙑";
+        renamed = " 󱙓";
+        staged = " +($count)";
       };
       palettes.solarized = {
         fg = "#93a1a1";
@@ -98,11 +107,30 @@
         green = "#b8bb26";
         blue = "#268bd2";
         cyan = "#2aa198";
+        dark-cyan = "#2aa198";
         yellow = "#b58900";
         purple = "#6c71c4";
         magenta = "#d33682";
         brwhite = "#fbf1c7";
         white = "#eee8d5";
+      };
+      palettes.dynamic = {
+        fg = "#${config.colorScheme.palette.base06}";
+        bg = "#${config.colorScheme.palette.base00}";
+        red = "#${config.colorScheme.palette.base08}";
+        yellow = "#${config.colorScheme.palette.base0A}";
+        dark-yellow = "#${config.colorScheme.palette.base0A}";
+        green = "#${config.colorScheme.palette.base0B}";
+        dark-green = "#${config.colorScheme.palette.base0B}";
+        cyan = "#${config.colorScheme.palette.base0C}";
+        dark-cyan = "#${config.colorScheme.palette.base0C}";
+        blue = "#${config.colorScheme.palette.base0D}";
+        dark-blue = "#${config.colorScheme.palette.base0D}";
+        magenta = "#${config.colorScheme.palette.base0E}";
+        dark-magenta = "#${config.colorScheme.palette.base0E}";
+        orange = "#${config.colorScheme.palette.base09}";
+        gray = "#${config.colorScheme.palette.base03}";
+        dark-gray = "#${config.colorScheme.palette.base02}";
       };
       palettes.gruvbox = {
         fg = "#ebdbb2";

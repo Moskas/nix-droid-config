@@ -1,37 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-colors, nixvim, ... }:
 
 {
-  imports = [ ../../modules/services/ssh.nix ];
+  imports = [ ../../modules/services/ssh.nix ../../modules ];
 
   # Simply install just the packages
-  environment.packages = with pkgs; [
-    neovim
-    nixfmt
-    openssh
-    mosh
-    curl
-    wget
-    coreutils
-    diffutils
-    findutils
-    unixtools.ifconfig
-    unixtools.whereis
-    which
-    utillinux
-    tzdata
-    hostname
-    man
-    gnugrep
-    ripgrep
-    gnupg
-    gnused
-    gnutar
-    bzip2
-    gzip
-    xz
-    zip
-    unzip
-  ];
+  environment.packages = with pkgs; [ ];
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
   environment.etcBackupExtension = ".bak";
@@ -56,5 +29,6 @@
     config = ./home.nix;
     backupFileExtension = "hm-bak";
     useGlobalPkgs = true;
+    extraSpecialArgs = { inherit nix-colors nixvim; };
   };
 }

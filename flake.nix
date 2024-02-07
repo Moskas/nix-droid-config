@@ -33,19 +33,15 @@
         system = "aarch64-linux";
         overlays = [ nix-on-droid.overlays.default ];
       };
-      colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
     in {
 
       nixOnDroidConfigurations = {
         boise = nix-on-droid.lib.nixOnDroidConfiguration {
-          modules = [
-	  	./hosts/boise/configuration.nix
-	  	nix-colors.homeManagerModules.default
-	  ];
-          extraSpecialArgs = { inherit nixvim pkgs nix-colors colorScheme; };
+          modules = [ ./hosts/boise/configuration.nix ];
+          extraSpecialArgs = { inherit pkgs nixvim nix-colors; };
           home-manager-path = home-manager.outPath;
         };
-	dewey = nix-on-droid.lib.nixOnDroidConfiguration {
+        dewey = nix-on-droid.lib.nixOnDroidConfiguration {
           modules = [ ./hosts/dewey/configuration.nix ];
           extraSpecialArgs = { inherit nixvim pkgs nix-colors; };
           home-manager-path = home-manager.outPath;

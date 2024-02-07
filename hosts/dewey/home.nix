@@ -2,20 +2,11 @@
 
 {
 
-  imports = [ ../../modules/shell ../../modules/git ];
+  imports = [ ../../modules/shell ../../modules/git ../../modules/editors ];
   # Read the changelog before changing this value
   home.stateVersion = "23.05";
 
-  home.packages = with pkgs; [
-    direnv
-    neofetch
-    onefetch
-    ranger
-    cargo
-    duf
-    du-dust
-    xmrig
-  ];
+  home.packages = with pkgs; [ ];
 
   # insert home-manager config
   programs.bash = {
