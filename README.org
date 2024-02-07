@@ -3,6 +3,10 @@
 My experimental [[https://github.com/nix-community/nix-on-droid][nix-on-droid]] flake.
 As of now it has a minimal copy of my main [[https://github.com/Moskas/nixos-config][flake]] for shell and git configs.
 
+* Configured Hosts
+ - Boise - my main phone
+ - Dewey - my e-reader
+
 * Install
 After the initial nix-on-droid bootstrap with flakes we need to add git to our current config at *~/.config/nix-on-droid/nix-on-droid.nix*
 like so:
@@ -14,5 +18,5 @@ environment.packages = with pkgs; [
 
 Then we need to switch to the updated flake, clone the repo and rebuild with the cloned flake.
 #+BEGIN_SRC shell
-nix-on-droid switch --flake .
+nix-on-droid switch --flake .#boise
 #+END_SRC

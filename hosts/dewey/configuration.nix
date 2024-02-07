@@ -45,7 +45,6 @@
   # Set up nix for flakes
   nix.extraOptions = ''
     experimental-features = nix-command flakes
-    warn-dirty = false
   '';
 
   # Set your time zone

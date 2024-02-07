@@ -22,26 +22,32 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-colors.url = "github:misterio77/nix-colors";
+
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-on-droid
-    , nixvim, ... }@inputs: {
+    , nixvim, nix-colors, ... }@inputs:
+    let
+      pkgs = import nixpkgs {
+        system = "aarch64-linux";
+        overlays = [ nix-on-droid.overlays.default ];
+      };
+      colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+    in {
 
       nixOnDroidConfigurations = {
-        boise =
-        nix-on-droid.lib.nixOnDroidConfiguration {
+        boise = nix-on-droid.lib.nixOnDroidConfiguration {
           modules = [
-            ./hosts/boise/configuration.nix
-          ];
-          extraSpecialArgs = {
-            inherit nixvim;
-          };
-          pkgs = import nixpkgs {
-            system = "aarch64-linux";
-            overlays = [
-              nix-on-droid.overlays.default
-            ];
-          };
+	  	./hosts/boise/configuration.nix
+	  	nix-colors.homeManagerModules.default
+	  ];
+          extraSpecialArgs = { inherit nixvim pkgs nix-colors colorScheme; };
+          home-manager-path = home-manager.outPath;
+        };
+	dewey = nix-on-droid.lib.nixOnDroidConfiguration {
+          modules = [ ./hosts/dewey/configuration.nix ];
+          extraSpecialArgs = { inherit nixvim pkgs nix-colors; };
           home-manager-path = home-manager.outPath;
         };
       };
