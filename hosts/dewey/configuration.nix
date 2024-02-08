@@ -12,8 +12,6 @@
   # Read the changelog before changing this value
   system.stateVersion = "23.05";
 
-  terminal.font =
-    "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
 
   # Set up nix for flakes
   nix.extraOptions = ''

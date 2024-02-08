@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./fonts ];
+
   environment.packages = with pkgs; [
     nixfmt
     openssh
