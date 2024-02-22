@@ -22,12 +22,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim-config = {
+      url = "github:Moskas/nixvim-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-colors.url = "github:misterio77/nix-colors";
 
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nix-on-droid
-    , nixvim, nix-colors, ... }@inputs:
+    , nixvim, nixvim-config, nix-colors, ... }@inputs:
     let
       pkgs = import nixpkgs {
         system = "aarch64-linux";
@@ -37,12 +42,32 @@
 
       nixOnDroidConfigurations = {
         boise = nix-on-droid.lib.nixOnDroidConfiguration {
-          modules = [ ./hosts/boise/configuration.nix ];
-          extraSpecialArgs = { inherit pkgs nixvim nix-colors; };
+          modules = [
+            ./hosts/boise/configuration.nix
+            {
+              home-manager = {
+                config = ./hosts/boise/home.nix;
+                backupFileExtension = "hm-bak";
+                useGlobalPkgs = true;
+                extraSpecialArgs = { inherit nix-colors nixvim nixvim-config; };
+              };
+            }
+          ];
+          extraSpecialArgs = { inherit pkgs nixvim nixvim-config nix-colors; };
           home-manager-path = home-manager.outPath;
         };
         dewey = nix-on-droid.lib.nixOnDroidConfiguration {
-          modules = [ ./hosts/dewey/configuration.nix ];
+          modules = [
+            ./hosts/dewey/configuration.nix
+            {
+              home-manager = {
+                config = ./hosts/dewey/home.nix;
+                backupFileExtension = "hm-bak";
+                useGlobalPkgs = true;
+                extraSpecialArgs = { inherit nix-colors nixvim nixvim-config; };
+              };
+            }
+          ];
           extraSpecialArgs = { inherit nixvim pkgs nix-colors; };
           home-manager-path = home-manager.outPath;
         };

@@ -1,4 +1,4 @@
-{ config, pkgs, nix-colors, nixvim, ... }:
+{ config, pkgs, nix-colors, ... }:
 
 {
 

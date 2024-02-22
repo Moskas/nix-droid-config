@@ -1,8 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, nix-colors, ... }:
 
 {
+  imports = [
+    nix-colors.homeManagerModules.default
+    ../../modules/shell
+    ../../modules/git
+    ../../modules/editors
+  ];
 
-  imports = [ ../../modules/shell ../../modules/git ../../modules/editors ];
+  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+
   # Read the changelog before changing this value
   home.stateVersion = "23.05";
 
@@ -18,10 +25,4 @@
   };
 
   programs.zsh = { enable = true; };
-
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs29;
-    extraPackages = epkgs: with epkgs; [ vterm-toggle ];
-  };
 }

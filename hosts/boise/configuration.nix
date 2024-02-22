@@ -1,4 +1,4 @@
-{ config, pkgs, nix-colors, nixvim, ... }:
+{ config, pkgs, nix-colors, nixvim, nixvim-config, ... }:
 
 {
   imports = [ ../../modules/services/ssh.nix ../../modules ];
@@ -19,14 +19,6 @@
 
   # Set your time zone
   time.timeZone = "Europe/Warsaw";
-
-  # Configure home-manager
-  home-manager = {
-    config = ./home.nix;
-    backupFileExtension = "hm-bak";
-    useGlobalPkgs = true;
-    extraSpecialArgs = { inherit nix-colors nixvim; };
-  };
 
   system.stateVersion = "23.05";
 }
