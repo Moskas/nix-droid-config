@@ -22,24 +22,24 @@
 
   # Setting terminal colors 
   terminal.colors = {
-    "foreground" = "#${nix-colors.config.colorScheme.palette.base06}";
-    "background" = "#${nix-colors.config.colorScheme.palette.base00}";
-    "color0" = "#${nix-colors.config.colorScheme.palette.base03}";
-    "color1" = "#${nix-colors.config.colorScheme.palette.base08}";
-    "color2" = "#${nix-colors.config.colorScheme.palette.base0B}";
-    "color3" = "#${nix-colors.config.colorScheme.palette.base0A}";
-    "color4" = "#${nix-colors.config.colorScheme.palette.base0D}";
-    "color5" = "#${nix-colors.config.colorScheme.palette.base0E}";
-    "color6" = "#${nix-colors.config.colorScheme.palette.base0C}";
-    "color7" = "#${nix-colors.config.colorScheme.palette.base06}";
-    "color8" = "#${nix-colors.config.colorScheme.palette.base03}";
-    "color9" = "#${nix-colors.config.colorScheme.palette.base08}";
-    "color10" = "#${nix-colors.config.colorScheme.palette.base0B}";
-    "color11" = "#${nix-colors.config.colorScheme.palette.base0A}";
-    "color12" = "#${nix-colors.config.colorScheme.palette.base0D}";
-    "color13" = "#${nix-colors.config.colorScheme.palette.base0E}";
-    "color14" = "#${nix-colors.config.colorScheme.palette.base0C}";
-    "color15" = "#${nix-colors.config.colorScheme.palette.base07}";
+    "foreground" = "#ebdbb2";
+    "background" = "#282828";
+    "color0" = "#665c54";
+    "color1" = "#fb4934";
+    "color10" = "#b8bb26";
+    "color11" = "#fabd2f";
+    "color12" = "#83a598";
+    "color13" = "#d3869b";
+    "color14" = "#8ec07c";
+    "color15" = "#fbf1c7";
+    "color2" = "#b8bb26";
+    "color3" = "#fabd2f";
+    "color4" = "#83a598";
+    "color5" = "#d3869b";
+    "color6" = "#8ec07c";
+    "color7" = "#ebdbb2";
+    "color8" = "#665c54";
+    "color9" = "#fb4934";
   };
 
   system.stateVersion = "23.05";
