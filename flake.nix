@@ -12,7 +12,7 @@
     };
 
     nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/release-23.05";
+      url = "github:nix-community/nix-on-droid/testing";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
@@ -38,8 +38,11 @@
         system = "aarch64-linux";
         overlays = [ nix-on-droid.overlays.default ];
       };
+      pkgs-unstable = import nixpkgs-unstable {
+        system = "aarch64-linux";
+        overlays = [ nix-on-droid.overlays.default ];
+      };
     in {
-
       nixOnDroidConfigurations = {
         boise = nix-on-droid.lib.nixOnDroidConfiguration {
           modules = [
