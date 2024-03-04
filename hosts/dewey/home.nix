@@ -8,7 +8,7 @@
     ../../modules/editors
   ];
 
-  colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
+  colorScheme = nix-colors.colorSchemes.gruvbox-light-medium;
 
   # Read the changelog before changing this value
   home.stateVersion = "23.05";
@@ -24,5 +24,17 @@
     '';
   };
 
-  programs.zsh = { enable = true; };
+  programs.zsh = {
+    enable = true;
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
+    enableAutosuggestions = true;
+    enableSyntaxHighlighting = true;
+    defaultKeymap = "emacs";
+    initExtra = ''
+      eval "$(direnv hook bash)"
+    '';
+  };
 }

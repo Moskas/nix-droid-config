@@ -37,8 +37,8 @@
     enableSyntaxHighlighting = true;
     defaultKeymap = "emacs";
     initExtra = ''
-            eval "$(direnv hook bash)"
-      	'';
+      eval "$(direnv hook bash)"
+    '';
   };
 
 }
