@@ -13,8 +13,8 @@
       ];
       scan_timeout = 10;
       character = {
-        success_symbol = "[ ](blue)";
-        error_symbol = "[ ](red)";
+        success_symbol = "[](blue)";
+        error_symbol = "[](red)";
       };
       fill = { symbol = " "; };
       time = {

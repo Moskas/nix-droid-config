@@ -3,7 +3,7 @@
 {
   imports = [
     ./newsboat.nix
-    ./exa.nix
+    ./eza.nix
     ./zoxide.nix
     ./bat.nix
     ./starship.nix
@@ -13,11 +13,13 @@
 
   home.packages = with pkgs; [
     direnv
+    nix-direnv
     neofetch
     onefetch
     ranger
-    cargo
     duf
     du-dust
+    lutgen
+    ncurses
   ];
 }

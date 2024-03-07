@@ -5,6 +5,8 @@
 
   environment.packages = with pkgs; [
     nixfmt
+    procps
+    killall
     openssh
     mosh
     curl

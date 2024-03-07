@@ -10,7 +10,7 @@
     };
     enableAutosuggestions = true;
     # syntaxHighlighting.enable = true; # Not available until 23.11
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     autocd = false;
     defaultKeymap = "emacs";
     plugins = [ ];

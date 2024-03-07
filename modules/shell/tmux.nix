@@ -8,11 +8,12 @@
     keyMode = "emacs";
     baseIndex = 1;
     shortcut = "Space";
-    terminal = "screen-256color";
+    terminal = "xterm-256color";
     shell = "${pkgs.zsh}/bin/zsh";
     extraConfig = ''
       set-option -sa terminal-overrides ',xterm*:Tc'
       set-option -g renumber-windows on
+      set -s escape-time 0
       bind V split-window -h -c '#{pane_current_path}'
       bind S split-window -v -c '#{pane_current_path}'
       unbind '%'

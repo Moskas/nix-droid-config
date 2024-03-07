@@ -1,10 +1,10 @@
-{ pkgs, nix-colors, nixvim, nixvim-config, ... }:
+{ pkgs, pkgs-unstable, nix-colors, nixvim, nixvim-config, ... }:
 
 {
   imports = [ ../../modules/services/ssh.nix ../../modules ];
 
   # Simply install just the packages
-  environment.packages = with pkgs; [ ];
+  environment.packages = with pkgs-unstable; [ nh ];
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
   environment.etcBackupExtension = ".bak";
