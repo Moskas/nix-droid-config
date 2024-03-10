@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, nix-colors, nixvim, nixvim-config, ... }:
+{lib, pkgs, pkgs-unstable, nix-colors, nixvim, nixvim-config, ... }:
 
 {
   imports = [ ../../modules/services/ssh.nix ../../modules ];
@@ -8,6 +8,8 @@
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
   environment.etcBackupExtension = ".bak";
+
+  environment.motd = "";
 
   user.shell = "${pkgs.zsh}/bin/zsh";
 

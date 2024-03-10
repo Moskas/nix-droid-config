@@ -35,7 +35,7 @@
         ssh_symbol = "󰣀 ";
         format = "[ $hostname ]($style)";
         style = " fg:bg bg:dark-cyan bold";
-        disabled = false;
+        disabled = true;
       };
       memory_usage = {
         disabled = false;

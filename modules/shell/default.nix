@@ -4,6 +4,7 @@
   imports = [
     ./newsboat.nix
     ./eza.nix
+    ./fzf.nix
     ./zoxide.nix
     ./bat.nix
     ./starship.nix
@@ -21,5 +22,6 @@
     du-dust
     lutgen
     ncurses
+    (callPackage ../../pkgs/epy.nix { })
   ];
 }
