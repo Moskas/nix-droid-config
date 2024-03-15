@@ -1,5 +1,3 @@
-{ config, lib, pkgs, ... }:
-
 {
   programs.newsboat = {
     enable = true;
@@ -394,12 +392,20 @@
         tags = [ "Tech" "Nix" "Blog" ];
       }
       {
+        url = "https://xn--gckvb8fzb.com/index.xml";
+        tags = [ "Tech" "Linux" "Privacy" "Blog" ];
+      }
+      {
         url = "https://determinate.systems/rss.xml";
-        tags = [ "Nix" ];
+        tags = [ "Nix" "Blog" ];
       }
       {
         url = "https://thewagner.net/feeds/all.atom.xml";
-        tags = [ "Nix" "Programming" "Homelab" ];
+        tags = [ "Nix" "Programming" "Homelab" "Blog" ];
+      }
+      {
+        url = "https://morss.it/https://nixcademy.com/feed";
+        tags = [ "Nix" "Blog" ];
       }
       {
         url = "https://itsfoss.com/rss/";
@@ -418,8 +424,12 @@
         tags = [ "Blog" "Linux" ];
       }
       {
-        url = "https://morss.it/https://michal.sapka.me/index.xml";
+        url = "https://michal.sapka.me/index.xml";
         tags = [ "Blog" "BSD" ];
+      }
+      {
+        url = "https://morss.it/https://fabiensanglard.net/rss.xml";
+        tags = [ "Blog" "Linux" "Tech" ];
       }
       {
         url = "https://morss.it/https://panoptykon.org/rss.xml";
@@ -457,6 +467,18 @@
       {
         url = "https://ploum.net/atom_en.xml";
         tags = [ "Blog" ];
+      }
+      {
+        url = "https://haseebmajid.dev/posts/index.xml";
+        tags = [ "Blog" "Nix" ];
+      }
+      {
+        url = "http://dorotac.eu/atom.xml";
+        tags = [ "Blog" "Tech" ];
+      }
+      {
+        url = "https://morss.it/https://signal.org/blog/rss.xml";
+        tags = [ "Blog" "Privacy" ];
       }
       #Twitch?
       {

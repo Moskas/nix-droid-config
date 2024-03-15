@@ -1,13 +1,12 @@
-{ config, pkgs, nix-colors, ... }:
-
-{
-
+{ config, pkgs, nix-colors, ... }: {
   imports = [
     nix-colors.homeManagerModules.default
     #nixvim.homeManagerModules.nixvim
     ../../modules/shell
     ../../modules/git
     ../../modules/editors
+    ../../modules/email/mu4u.nix
+    ../../modules/email/neomutt.nix
   ];
 
   colorScheme = nix-colors.colorSchemes.gruvbox-dark-medium;
@@ -26,5 +25,4 @@
       zsh
     '';
   };
-
 }

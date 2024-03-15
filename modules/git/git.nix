@@ -5,7 +5,12 @@
     enable = true;
     userName = "Moskas";
     userEmail = "minemoskas@gmail.com";
-    extraConfig = { init.defaultBranch = "master"; };
+    extraConfig = {
+      init = {
+        defaultBranch = "master";
+        safe.directory = "/mnt/sdcard/Org/";
+      };
+    };
     aliases = {
       c = "clone";
       ci = "commit";
