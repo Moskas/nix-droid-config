@@ -8,6 +8,8 @@
     ./zoxide.nix
     ./bat.nix
     ./starship.nix
+    ./tickrs.nix
+    ./ranger.nix
     ./tmux.nix
     ./zsh.nix
   ];
@@ -17,7 +19,6 @@
     nix-direnv
     neofetch
     onefetch
-    ranger
     duf
     du-dust
     lutgen

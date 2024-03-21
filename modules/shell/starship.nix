@@ -13,12 +13,12 @@
       ];
       scan_timeout = 10;
       character = {
-        success_symbol = "[](blue)";
-        error_symbol = "[](red)";
+        success_symbol = "[ ](blue)";
+        error_symbol = "[ ](red)";
       };
       fill = { symbol = " "; };
       time = {
-        disabled = false;
+        disabled = true;
         format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
         style = "fg:magenta  bg:dark-gray";
@@ -65,12 +65,12 @@
         format = "[ $symbol $version ](bg:blue fg:bg)";
       };
       os = {
-        disabled = false;
+        disabled = true;
         style = "bg:blue";
         symbols = {
           Arch = "[  ](fg:bg $style)";
           NixOS = "[  ](fg:bg $style)";
-          Macos = "[  ](fg:red $style)";
+          Macos = "[  ](fg:bg $style)";
           Linux = "[  ](fg:bg $style)";
         };
       };
