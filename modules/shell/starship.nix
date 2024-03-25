@@ -16,13 +16,13 @@
       };
       fill = { symbol = " "; };
       time = {
-        disabled = false;
+        disabled = true;
         format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
         style = "fg:bg  bg:cyan bold";
       };
       username = {
-        disabled = false;
+        disabled = true;
         style_user = "fg:bg bg:blue bold";
         style_root = "fg:red bg:blue  italic";
         format = "[ $user ]($style)";
@@ -76,7 +76,7 @@
         format = "[ $symbol $version ](bg:blue fg:bg)";
       };
       os = {
-        disabled = false;
+        disabled = true;
         style = "bg:blue";
         symbols = {
           Arch = "[  ](fg:bg $style)";
