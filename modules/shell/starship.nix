@@ -1,6 +1,4 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ config, lib, pkgs, ... }: {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -18,10 +16,10 @@
       };
       fill = { symbol = " "; };
       time = {
-        disabled = true;
+        disabled = false;
         format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
-        style = "fg:magenta  bg:dark-gray";
+        style = "fg:bg  bg:cyan bold";
       };
       username = {
         disabled = false;
@@ -35,7 +33,7 @@
         ssh_symbol = "󰣀 ";
         format = "[ $hostname ]($style)";
         style = " fg:bg bg:dark-cyan bold";
-        disabled = true;
+        disabled = false;
       };
       memory_usage = {
         disabled = false;
@@ -51,13 +49,26 @@
         truncation_symbol = "…/";
         truncate_to_repo = true;
       };
+      directory.substitutions = {
+        "Documents" = "󰈙 ";
+        "Downloads" = " ";
+        "Music" = "󰝚 ";
+        "Pictures" = " ";
+        "Org" = "";
+        "Repos" = "";
+        "Projects" = "";
+        "Mail" = "";
+      };
       rust = {
         symbol = "🦀";
         format = "[ $symbol $version ](bg:yellow fg:bg )";
       };
-      python = { format = "[ $symbol $version ](bg:yellow fg:bg )"; };
+      python = {
+        symbol = "";
+        format = "[ $symbol $version ](bg:yellow fg:bg )";
+      };
       c = {
-        symbol = " ";
+        symbol = "";
         detect_extensions = ''["c", "h", "cpp"]'';
       };
       lua = {
@@ -65,7 +76,7 @@
         format = "[ $symbol $version ](bg:blue fg:bg)";
       };
       os = {
-        disabled = true;
+        disabled = false;
         style = "bg:blue";
         symbols = {
           Arch = "[  ](fg:bg $style)";
@@ -94,7 +105,7 @@
         untracked = " 󱙓";
         deleted = " 󱙑";
         renamed = " 󱙓";
-        staged = " +($count)";
+        staged = " 󰎜";
       };
       palettes.solarized = {
         fg = "#93a1a1";

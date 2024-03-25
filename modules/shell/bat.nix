@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   programs.bat = {
@@ -6,7 +6,7 @@
     config = {
       theme = "gruvbox-dark";
       color = "always";
-      pager = "less -FR";
+      #pager = "less -FR";
     };
   };
 }

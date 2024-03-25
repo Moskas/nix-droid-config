@@ -1,28 +1,34 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   imports = [
-    ./newsboat.nix
+    ./bat.nix
+    ./direnv.nix
     ./eza.nix
     ./fzf.nix
-    ./zoxide.nix
-    ./bat.nix
+    ./newsboat.nix
+    ./neofetch.nix
+    ./ranger.nix
     ./starship.nix
     ./tickrs.nix
-    ./ranger.nix
     ./tmux.nix
+    ./yazi.nix
     ./zsh.nix
+    ./zoxide.nix
   ];
 
   home.packages = with pkgs; [
-    direnv
-    nix-direnv
-    neofetch
-    onefetch
-    duf
+    jq
     du-dust
-    lutgen
-    ncurses
+    duf
+    amfora
     (callPackage ../../pkgs/epy.nix { })
+    onefetch
+    zip
+    unzip
+    unrar
+    p7zip
+    wget
+    nurl
+    rates
+    ripgrep
   ];
 }
