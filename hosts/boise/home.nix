@@ -1,10 +1,10 @@
-{ config, pkgs, nix-colors, ... }: {
+{ config, pkgs, nix-colors, nixvim, ... }: {
   imports = [
     nix-colors.homeManagerModules.default
-    #nixvim.homeManagerModules.nixvim
     ../../modules/shell
     ../../modules/git
     ../../modules/editors
+    ../../modules/dev
     ../../modules/email/mu4u.nix
     ../../modules/email/neomutt.nix
   ];

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, nixvim, nixvim-config, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   #imports = [ nixvim.homeManagerModules.nixvim ];

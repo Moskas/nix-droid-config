@@ -19,7 +19,7 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nixvim-config = {
@@ -47,12 +47,13 @@
         boise = nix-on-droid.lib.nixOnDroidConfiguration {
           modules = [
             ./hosts/boise/configuration.nix
+	    #inputs.nixvim.nixosModules.nixvim
             {
               home-manager = {
                 config = ./hosts/boise/home.nix;
                 backupFileExtension = "hm-bak";
                 useGlobalPkgs = true;
-                extraSpecialArgs = { inherit nix-colors nixvim nixvim-config; };
+                extraSpecialArgs = { inherit nix-colors nixvim; };
               };
             }
           ];

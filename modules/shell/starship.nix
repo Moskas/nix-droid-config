@@ -31,7 +31,7 @@
       hostname = {
         ssh_only = false;
         ssh_symbol = "󰣀 ";
-        format = "[ $hostname ]($style)";
+        format = "[ boise ]($style)";
         style = " fg:bg bg:dark-cyan bold";
         disabled = false;
       };
@@ -95,11 +95,11 @@
         format = "[ $duration ](fg:yellow bg:dark-gray)";
       };
       git_branch = {
-        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg )";
+        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg bold)";
         symbol = " ";
       };
       git_status = {
-        format = "([$all_status ](bg:purple fg:bg ))";
+        format = "([$all_status ](bg:purple fg:bg bold))";
         stashed = " 󰿺";
         modified = " 󱞁";
         untracked = " 󱙓";
