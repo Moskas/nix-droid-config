@@ -1,10 +1,10 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
 
-  home.packages = with pkgs; [
-  #  (callPackage ../scripts/battery.nix { })
-  #  (callPackage ../scripts/check-ssh.nix { })
-  ];
+  home.packages = with pkgs;
+    [
+      #  (callPackage ../scripts/battery.nix { })
+      #  (callPackage ../scripts/check-ssh.nix { })
+    ];
 
   programs.tmux = {
     enable = true;

@@ -6,7 +6,7 @@
     ./fzf.nix
     ./newsboat.nix
     ./neofetch.nix
-    #./ranger.nix # In the future
+    ./ranger.nix
     ./starship.nix
     ./tickrs.nix
     ./tmux.nix
