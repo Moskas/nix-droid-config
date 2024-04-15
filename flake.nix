@@ -43,13 +43,12 @@
         boise = nix-on-droid.lib.nixOnDroidConfiguration {
           modules = [
             ./hosts/boise/configuration.nix
-            #inputs.nixvim.nixosModules.nixvim
             {
               home-manager = {
                 config = ./hosts/boise/home.nix;
                 backupFileExtension = "hm-bak";
                 useGlobalPkgs = true;
-                extraSpecialArgs = { inherit nix-colors nixvim; };
+                extraSpecialArgs = { inherit nix-colors nixvim nixvim-config; };
               };
             }
           ];
