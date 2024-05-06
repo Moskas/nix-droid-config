@@ -19,6 +19,7 @@
     jq
     du-dust
     ncurses
+    nh
     duf
     amfora
     (callPackage ../../pkgs/epy.nix { })
@@ -35,5 +36,6 @@
     nurl
     rates
     ripgrep
+    nix-output-monitor
   ];
 }
