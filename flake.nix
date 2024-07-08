@@ -41,6 +41,7 @@
     in {
       nixOnDroidConfigurations = {
         boise = nix-on-droid.lib.nixOnDroidConfiguration {
+          inherit pkgs;
           modules = [
             ./hosts/boise/configuration.nix
             {
@@ -56,6 +57,7 @@
           home-manager-path = home-manager.outPath;
         };
         dewey = nix-on-droid.lib.nixOnDroidConfiguration {
+          inherit pkgs;
           modules = [
             ./hosts/dewey/configuration.nix
             {

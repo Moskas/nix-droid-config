@@ -14,7 +14,7 @@
   # Read the changelog before changing this value
   home.stateVersion = "23.05";
 
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [ ollama ];
 
   # insert home-manager config
   programs.bash = {
@@ -22,7 +22,6 @@
     enableCompletion = true;
     bashrcExtra = ''
       eval "$(direnv hook bash)"
-      zsh
     '';
   };
 }

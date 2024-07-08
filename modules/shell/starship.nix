@@ -1,37 +1,41 @@
-{ config, lib, pkgs, ... }: {
+{ config, ... }:
+{
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgs.starship;
     settings = {
       add_newline = false;
       palette = "dynamic";
-      format = lib.concatStrings [
-        "$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo$character"
-      ];
+      format = ''
+        $hostname$directory$character
+      '';
+      #$os$username$hostname$rust$python$node$lua$git_branch$git_status$git_state$fill$nix_shell$time$line_break$directory$sudo
+      right_format = ''$nix_shell$rust$python$node$lua$git_status$git_state$git_branch'';
       scan_timeout = 10;
       character = {
         success_symbol = "[ ](blue)";
         error_symbol = "[ ](red)";
       };
-      fill = { symbol = " "; };
+      fill = {
+        symbol = " ";
+      };
       time = {
-        disabled = true;
+        disabled = false;
         format = "[ 󰅐 $time ]($style)";
         time_format = "%T";
         style = "fg:bg  bg:cyan bold";
       };
       username = {
-        disabled = true;
+        disabled = false;
         style_user = "fg:bg bg:blue bold";
         style_root = "fg:red bg:blue  italic";
         format = "[ $user ]($style)";
         show_always = true;
       };
       hostname = {
-        ssh_only = false;
+        ssh_only = true;
         ssh_symbol = "󰣀 ";
-        format = "[ boise ]($style)";
+        format = "[ $hostname ]($style)";
         style = " fg:bg bg:dark-cyan bold";
         disabled = false;
       };
@@ -61,11 +65,11 @@
       };
       rust = {
         symbol = "🦀";
-        format = "[ $symbol $version ](bg:yellow fg:bg )";
+        format = "[ $symbol $version ](fg:yellow bg:bg bold)";
       };
       python = {
         symbol = "";
-        format = "[ $symbol $version ](bg:yellow fg:bg )";
+        format = "[ $symbol $version ](fg:yellow bg:bg bold)";
       };
       c = {
         symbol = "";
@@ -73,39 +77,45 @@
       };
       lua = {
         symbol = "";
-        format = "[ $symbol $version ](bg:blue fg:bg)";
+        format = "[ $symbol $version ](fg:blue bg:bg bold)";
       };
       os = {
-        disabled = true;
+        disabled = false;
         style = "bg:blue";
         symbols = {
           Arch = "[  ](fg:bg $style)";
           NixOS = "[  ](fg:bg $style)";
           Macos = "[  ](fg:bg $style)";
+          Void = "[  ](fg:bg bg:green)";
           Linux = "[  ](fg:bg $style)";
         };
       };
       nix_shell = {
         disabled = false;
         symbol = "";
-        format = "[ $symbol $state ](bg:blue fg:bg bold)";
+        format = "[$state $symbol ](fg:blue bg:bg bold)";
       };
       cmd_duration = {
         min_time = 500;
-        format = "[ $duration ](fg:yellow bg:dark-gray)";
+        format = "[ $duration](bg:bg fg:yellow bold)";
       };
       git_branch = {
-        format = "[ $symbol$branch(:$remote_branch) ](bg:purple fg:bg bold)";
+        format = "[$branch $symbol (:$remote_branch)](fg:purple bg:bg bold)";
         symbol = " ";
       };
       git_status = {
-        format = "([$all_status ](bg:purple fg:bg bold))";
+        format = "([$all_status ](fg:purple bg:bg bold))";
         stashed = " 󰿺";
         modified = " 󱞁";
         untracked = " 󱙓";
         deleted = " 󱙑";
         renamed = " 󱙓";
         staged = " 󰎜";
+      };
+      custom.nix = {
+        command = "nix --version | awk '{ print $3 }'";
+        detect_extensions = [ "nix" ];
+        format = "[  $output](fg:blue)";
       };
       palettes.solarized = {
         fg = "#93a1a1";
