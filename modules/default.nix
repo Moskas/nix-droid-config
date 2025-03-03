@@ -4,7 +4,7 @@
   imports = [ ./fonts ];
 
   environment.packages = with pkgs; [
-    nixfmt
+    nixfmt-rfc-style
     procps
     killall
     openssh
