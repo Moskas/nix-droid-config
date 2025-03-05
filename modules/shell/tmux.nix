@@ -1,19 +1,32 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    (callPackage ./scripts/battery.nix { })
+    (callPackage ./scripts/check-ssh.nix { })
+  ];
 
-  home.packages = with pkgs;
-    [
-      #  (callPackage ../scripts/battery.nix { })
-      #  (callPackage ../scripts/check-ssh.nix { })
-    ];
+  #systemd.user.services.tmux = {
+  #  Unit.Description = "tmux server";
+  #  Serivce = {
+  #    Type = "forking";
+  #    ExecStart = "${pkgs.tmux}/bin/tmux new -s 0 -d";
+  #    ExecStop = "${pkgs.tmux}/bin/tmux kill-server";
+  #  };
+  #  Install = {
+  #    WantedBy = [ "multi-user.target" ];
+  #  };
+  #};
 
   programs.tmux = {
     enable = true;
     mouse = true;
+    secureSocket = true;
     clock24 = true;
     keyMode = "emacs";
     baseIndex = 1;
     shortcut = "Space";
     terminal = "screen-256color";
+    historyLimit = 20000;
     shell = "${pkgs.zsh}/bin/zsh";
     extraConfig = ''
       set -g pane-border-style fg=default
@@ -26,9 +39,11 @@
       set-option -g pane-border-style fg=black
       set-option -g pane-active-border-style fg=green
 
-      set -g status-left ' #[fg=blue,bg=default]  #[fg=blue]#(check-ssh)'
-      set -g status-right '#[fg=blue]#{b:pane_current_path} #[fg=magenta,bg=default]%d.%a %H:%M:%S#[default] #[fg=cyan]#(echo $(bat-stat))#[fg=cyan][#S]'
+      set -g status-left ' #[fg=blue,bg=default]  #[fg=blue]#(check-ssh) '
+      set -g status-right '#[fg=blue] #[fg=blue]#{b:pane_current_path} #[fg=magenta] #[fg=magenta,bg=default]%d.%a %H:%M:%S#[fg=cyan]#[push-default]#(bat_info=$(bat-stat); if [ -n "$bat_info" ]; then echo " $bat_info"; else echo " "; fi)#[fg=cyan] #S '
       set -g status-style bg=default,fg=default
+      set -g status-left-length 40
+      set -g status-right-length 80
 
       set-window-option -g window-status-format "#I:#W"
 
@@ -45,13 +60,16 @@
       set-option -g renumber-windows on
       set -s escape-time 0
       bind - select-layout even-horizontal
-      bind _ select-layout even-vertical
+      bind - select-layout even-vertical
       bind V split-window -h -c '#{pane_current_path}'
       bind S split-window -v -c '#{pane_current_path}'
+      bind N new-session
       bind r source-file ~/.config/tmux/tmux.conf\;\
         display 'Config reloaded'
       unbind '%'
       unbind '"'
+      bind-key -n C-S-j previous-window
+      bind-key -n C-S-k next-window
     '';
     plugins = with pkgs; [
       {
